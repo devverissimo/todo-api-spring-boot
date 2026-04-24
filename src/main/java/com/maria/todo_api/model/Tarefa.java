@@ -1,8 +1,7 @@
 package com.maria.todo_api.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotBlank;
+
 
 import java.time.LocalDate;
 
@@ -14,7 +13,7 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Título é obrigatório")
+
     @Column(nullable = false)
     private String titulo;
 
@@ -23,7 +22,7 @@ public class Tarefa {
     @Column(nullable = false)
     private String status;
 
-    @FutureOrPresent(message = "O prazo não pode ser uma data no passado")
+
     private LocalDate prazo;
 
     public Long getId(){ return id; }

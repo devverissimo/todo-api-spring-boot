@@ -18,7 +18,7 @@ public class Tarefa {
     @Column(nullable = false)
     private String titulo;
 
-    private String  descrição;
+    private String descricao;
 
     @Column(nullable = false)
     private String status;
@@ -39,12 +39,12 @@ public class Tarefa {
         this.titulo = titulo;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getStatus() {

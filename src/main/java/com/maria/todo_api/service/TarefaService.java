@@ -1,5 +1,6 @@
 package com.maria.todo_api.service;
 
+import com.maria.todo_api.exception.TarefaNaoEncontradaException;
 import com.maria.todo_api.model.Tarefa;
 import com.maria.todo_api.repository.TarefaRepository;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class TarefaService {
 
     public Tarefa buscarPorId(Long id){
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tarefa nap encontrada"));
+                .orElseThrow(() -> new TarefaNaoEncontradaException(id));
     }
 
     public Tarefa criar(Tarefa tarefa){
@@ -28,7 +29,7 @@ public class TarefaService {
     public Tarefa atualizar(Long id, Tarefa dados){
         Tarefa existente = buscarPorId(id);
         existente.setTitulo(dados.getTitulo());
-        existente.setDescrição((dados.getDescrição()));
+        existente.setDescricao((dados.getDescricao()));
         existente.setStatus(dados.getStatus());
         return repository.save(existente);
     }

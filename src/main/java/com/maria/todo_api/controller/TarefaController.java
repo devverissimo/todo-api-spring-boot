@@ -2,6 +2,7 @@ package com.maria.todo_api.controller;
 
 import com.maria.todo_api.model.Tarefa;
 import com.maria.todo_api.service.TarefaService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class TarefaController {
     }
 
     @PostMapping
-    public ResponseEntity<Tarefa> criar(@RequestBody Tarefa tarefa) {
+    public ResponseEntity<Tarefa> criar(@RequestBody @Valid Tarefa tarefa) {
         return ResponseEntity.status(201).body(service.criar(tarefa));
     }
 
@@ -34,7 +35,7 @@ public class TarefaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody Tarefa tarefa){
+    public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody @Valid Tarefa tarefa){
         return ResponseEntity.ok(service.atualizar(id, tarefa));
     }
 
